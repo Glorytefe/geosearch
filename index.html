@@ -11,8 +11,23 @@
 </head>
 <body>
   <!-- main -->
-  <main>
-      
+  <main class="container">
+      <!-- search bar starts -->
+    <div class="searchbar">
+        <!-- form container -->
+      <form action="/" autocomplete="off"  id="se">
+        <div class="search-box flex top p2">
+          <i class="fas fa-map-marker-alt px2"></i>
+          <input type="search" id="searchs" name="searchs" placeholder="search places">
+        </div>
+        <div class="search-box hide" id="hide"> 
+            <div id="hold">
+            </div>
+        </div>
+        
+      </form>
+    </div>
+<!-- search ends -->
   </main>
     <!-- script -->
     <script src="./script/index.js"></script>
