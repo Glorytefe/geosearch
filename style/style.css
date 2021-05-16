@@ -32,3 +32,37 @@
     justify-content: center;
     align-items: center;
 }
+
+/* style for main */
+
+/* style for search form */
+.search-box {
+    max-width: 500px;
+    margin: 1px;
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+    }
+    
+    .search-box input{
+    width: 90%;
+    min-height: 45px;
+    outline: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 18px;
+    
+    }
+    
+    #hold p {
+        padding: 10px 3px;
+        font-size: 18px;
+        text-transform: capitalize;
+        width: 100%;
+    }
+    
+    .hide{
+        visibility: hidden;
+        cursor: pointer;
+    }
+    /*serch ends  */
