@@ -9,7 +9,7 @@ let newLng;
  class getData{
    
       async predictns(searchStr) {
-        let url = `http://www.mapquestapi.com/search/v3/prediction?key=${KEY}&limit=5&collection=adminArea,poi,address,category,franchise,airport&q=${searchStr}`;
+        let url = `https://www.mapquestapi.com/search/v3/prediction?key=${KEY}&limit=5&collection=adminArea,poi,address,category,franchise,airport&q=${searchStr}`;
             try {
               let response = await fetch(url);
               let data = await response.json();
