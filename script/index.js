@@ -30,7 +30,7 @@ let newLng;
                })
             ss.dispSearch(searchRes, searchStr); 
            }
-           if(!newData  || newData.length === 0){
+           if(!newData  || newData.length === 0 && searchStr){
             ss.noPred(searchStr)
            } 
             } catch (error) {
@@ -71,7 +71,6 @@ class SEARCH {
         e.preventDefault();
        let searchStr = e.target.value.toLowerCase();
         const getdataMap = new getData();
-        const newSear = new SEARCH()
         getdataMap.predictns(searchStr);
         if(e.target.value === ''){
             this.vis.style.visibility = 'hidden';
@@ -114,7 +113,8 @@ class SEARCH {
     noPred(searchStr){
         const dataNoPred = new getData();
             this.searchHold.innerHTML = '';
-                this.vis.style.visibility = 'visible';
+
+            if(searchStr){
                 let p= `<p class="hovera"><i class="fas fa-map-marker-alt px2 colblue" ></i>${searchStr}</p>`
                 this.searchHold.innerHTML += p; 
                     document.querySelector('.hovera').addEventListener('click', (e)=>{
@@ -132,6 +132,8 @@ class SEARCH {
                     // searchWord.value = itemVal;
                     dataNoPred.mapsLoc()
                 });
+            }
+           
 
 
     }
