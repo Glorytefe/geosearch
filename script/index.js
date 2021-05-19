@@ -5,15 +5,15 @@ let reqLocation;
 let newLat;
 let newLng;
 
-
  class getData{
    
       async predictns(searchStr) {
-        let url = `https://www.mapquestapi.com/search/v3/prediction?key=${KEY}&limit=5&collection=adminArea,poi,address,category,franchise,airport&q=${searchStr}`;
+        const ss = new SEARCH()
+        let url = `https://www.mapquestapi.com/search/v3/prediction?key=${KEY}&limit=14&collection=adminArea,poi,address,category,franchise,airport&q=${searchStr}`;
             try {
               let response = await fetch(url);
               let data = await response.json();
-             let newData = data.results;
+            let  newData = data.results;
             //  console.log(newData);
                 const searchRes = []
            if(newData){
@@ -23,17 +23,38 @@ let newLng;
                    let searchdata = {
                       name: dispStr.name,
                       lngs: reqLocat[0],
-                      lats: reqLocat[1]
+                      lats: reqLocat[1],
+                      optn: searchStr,
                    }
                    searchRes.push(searchdata);
                })
-           }
-            const ss = new SEARCH()
             ss.dispSearch(searchRes, searchStr); 
+           }
+           if(!newData  || newData.length === 0){
+            ss.noPred(searchStr)
+           } 
             } catch (error) {
               console.log(error);
             }
           }  
+
+          async mapsLoc() {
+        const nopredMap = new mapdisp
+
+            let url = `https://open.mapquestapi.com/geocoding/v1/address?key=${KEY}&location=${lowRegStr}`;
+                try {
+                  let response = await fetch(url);
+                  let data = await response.json();
+                  reqLocation  = data.results[0].locations[0].latLng;
+                  newLng = reqLocation.lng;
+                  newLat = reqLocation.lat;
+                nopredMap.displayMap()
+
+                //   return reqLocation;
+                } catch (error) {
+                  console.log(error);
+                }
+              }    
  }
 
 
@@ -50,15 +71,17 @@ class SEARCH {
         e.preventDefault();
        let searchStr = e.target.value.toLowerCase();
         const getdataMap = new getData();
+        const newSear = new SEARCH()
         getdataMap.predictns(searchStr);
         if(e.target.value === ''){
             this.vis.style.visibility = 'hidden';
 
         }
+        
     }
 
-    // display search 
-    dispSearch(searchRes, searchStr){
+    // display search for predictns
+    dispSearch(searchRes){
         if(searchRes){
             const displayd = new mapdisp()
 
@@ -84,7 +107,33 @@ class SEARCH {
 
                 });
             } 
-      
+            
+        
+    }
+
+    noPred(searchStr){
+        const dataNoPred = new getData();
+            this.searchHold.innerHTML = '';
+                this.vis.style.visibility = 'visible';
+                let p= `<p class="hovera"><i class="fas fa-map-marker-alt px2 colblue" ></i>${searchStr}</p>`
+                this.searchHold.innerHTML += p; 
+                    document.querySelector('.hovera').addEventListener('click', (e)=>{
+                    e.preventDefault()
+                    this.vis.style.visibility = 'hidden';
+                    let itemVal = e.target.textContent;
+
+                    searchWord.value = itemVal;
+                    let re = /[&\/\\#()$~%.'":*?<>{}]/g;
+                    let pe = /[\s]/g
+
+                    lowRegStr = itemVal.replace(re, '');
+                    lowRegStr = lowRegStr.replace(pe, '+')
+
+                    // searchWord.value = itemVal;
+                    dataNoPred.mapsLoc()
+                });
+
+
     }
 }
 
@@ -116,9 +165,10 @@ var geolocate = new mapboxgl.GeolocateControl({
                 container: 'map',
                 style: 'mapbox://styles/mapbox/streets-v11',
                 center: [newLng, newLat],
-                zoom: 10,
+                zoom: 15,
                 // shouldBeDraggable: true
             });
+            // console.log(map);
 
             let marker = new mapboxgl.Marker()
             .setLngLat([newLng, newLat])
@@ -144,6 +194,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     // invoke funct getWord on form input
     searchWord.addEventListener('input', (e)=>{
         searchFunct.getword(e);
+        
     });
 
    displays.displayMap();
