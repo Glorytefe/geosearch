@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 *{
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
 }
 /* roots */
 :root{
@@ -22,6 +24,9 @@
 .container{
     padding: 30px 10px;
     position: relative;
+    /* height: 50vh; */
+    /* width: 100%;
+    margin: auto; */
 }
 .hovera:hover{
     background-color: var(--searchHover) ;
@@ -33,6 +38,14 @@
     display: flex;
     align-items: center;
 }
+.absolute{
+    position: absolute;
+}
+.auto{
+    left: 0;
+    right: 0;
+    margin: auto;
+}
 
 /* style for main */
 
@@ -40,14 +53,14 @@
 /* style for search form */
 
 .search-box {
-    margin: 1px;
     border-radius: 5px;
     box-shadow: var(--shadow);
     }
     
     .search-box input{
+    margin: 1px;
     width: 95%;
-    min-height: 45px;
+    min-height: 50px;
     outline: none;
     border: none;
     background: none;
@@ -64,17 +77,13 @@
     }
     
     .hide{
-        position: absolute;
+        z-index: 2;
         width: 95%;
         visibility: hidden;
         cursor: pointer;
         color: white;
         background-color: rgba(68, 60, 60, 0.9);
-        z-index: 2;
         cursor: pointer;
-        left: 0;
-        right: 0;
-        margin: auto;
     }
   .notfound{
       color: var(--colrd);
@@ -89,13 +98,111 @@
 
     /* map starts */
     #map {
-        /* max-width: 1000px; */
-        width: 95%; 
-        height: 800px;
         position: absolute;
-        z-index: -1;
+        /* top: 10px; */
+        /* bottom: 0; */
         left: 0;
         right: 0;
         margin: auto;
+        width: 95%; 
+        height: 680px;
+        object-fit: cover;
+        /* height: 100%; */
+        z-index: -1;
       }
-      
+     
+/* weather */
+.weathers{
+    margin: 10px 0;
+    visibility: hidden;
+}
+.weath{
+    z-index: 2;
+    max-width: 800px;
+    width: 95%;
+    justify-content: space-around;
+    box-shadow: var(--shadow);
+    background-color: rgba(255, 255, 255, 0.95);
+    
+}
+
+.weath > div{
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    justify-content: center;
+    line-height: 20px;
+}
+
+.weath > div b{
+    font-size: 16px;
+    padding: 2px 0;
+    /* color: rgba(43, 72, 168, 0.8); */
+}
+
+.weath > div span{
+    font-size: 16px;
+}
+.temLocBtn{
+    background-color: wheat;
+    padding: 2px 0;
+    border-radius: 5px 0px;
+    cursor: pointer;
+}
+
+.temLocBtn:hover{
+    background-color: teal;
+}
+
+.lft{
+    position: absolute;
+    right: 1px;
+    color: gray;
+    
+}
+.rgt{
+    visibility: hidden;
+    z-index: 2;
+    color: gray;
+}
+#iconImg img{
+    width: 30px;
+}
+@media screen and (max-width: 280px){
+    .weath{
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 5px;
+    }
+    .weath > div{
+        /* width: 90px; */
+        align-items: center;
+        line-height: 20px;
+    }
+    .lft{
+        top: -30px;
+        /* font-size: 20px; */
+    }
+    .temLocBtn{
+        width: 35px;
+    }
+    .weath > div b{
+        font-size: 14px;
+
+    }
+
+}
+@media screen and (max-width: 700px){
+    .weath > div span{
+        font-size: 10px;
+    }
+    .weath > div b{
+        font-size: 14px;
+    }
+    #map {
+        /* width: 98%; */
+        height: 500px;
+        
+      }
+
+}

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no">
      <!-- custom css -->
      <link rel="stylesheet" href="./style/style.css">
      <!-- font awesome -->
@@ -12,8 +12,8 @@
     <!-- <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script> -->
 
       
-<script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
-<link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
 
      <title>Geo-Search</title>
 </head>
@@ -27,18 +27,38 @@
     <form action="/" autocomplete="off"  id="se">
       <div class="search-box p2 flex top">
         <i class="fas fa-map-marker-alt px2"></i>
-        <input type="search" id="searchs" name="searchs" placeholder="search places">
+        <input type="search" id="searchs" name="searchs" placeholder="search places" required>
       </div>
-      <small class="notfound"></small>
-      <div class="search-box hide" id="hide"> 
-          <div id="hold">
-          </div>
-      </div>
-    
+      <span class="notfound"></span>
     </form>
+    <!-- weather div -->
+    <div class="weathers" id="tggleDisp">
+      <div class="absolute flex weath auto" id="tggleEff">
+        <div class="weathhov "><div  id="iconImg"></div> <span id="descLoc">cloudy</span></div>
+        <div class="weathhov "><span >Temp</span> <span id="temLoc" class="temLocBtn"><b >27&deg;C</b></span>
+          <!-- <button id="temLocBtn" ><i class="fas fa-temperature-high    "></i></button>  -->
+        </div>
+        <div class="weathhov "><span>Humidity</span><b id="humidityLoc" >77%</b></div>
+        <div class="weathhov "><span>wind speed</span><b id="wspeedLoc">77%</b></div>
+        
+        <div class="lft weathhov " id="lft">
+          <i class="fas fa-caret-left fa-3x" id="tggle"></i>
+
+        </div>
+      </div>
+      <div class="rgt weathhov absolute" id="rgt">
+        <i class="fas fa-caret-right fa-3x" id="tggle"></i>
+      </div>
+    </div> 
+    <!-- list for result of search-->
+     <div class="search-box hide absolute auto" id="hide"> 
+      <div id="hold" class="">
+      </div>
+  </div>
   </div>
 <!-- search ends -->
 <!-- map starts -->
+
 <div id="map"></div>
     </div>
 
