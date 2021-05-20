@@ -6,7 +6,7 @@
 }
 /* roots */
 :root{
-    --blCol: rgba(238, 238, 241, 0.5);
+    /* --blCol: rgba(222, 222, 241, 0.932); */
     --searchHover: rgba(217, 225, 233, 0.1);
     --shadow: 3px 2px 5px 7px rgba(49, 49, 49, 0.1);
     --colrd: red; 
@@ -18,22 +18,16 @@
 .p2{
     padding: 5px;
 }
-.colicon{
-    color: var(--blCol);
-}
+
 .container{
     padding: 30px 10px;
-    position: relative;
-    /* height: 50vh; */
-    /* width: 100%;
-    margin: auto; */
+    /* position: relative; */
+    /* height: 100%; */
 }
 .hovera:hover{
     background-color: var(--searchHover) ;
 }
-.top{
-    border-bottom: 1px solid var(--blCol);
-}
+
 .flex{
     display: flex;
     align-items: center;
@@ -85,15 +79,6 @@
         background-color: rgba(68, 60, 60, 0.9);
         cursor: pointer;
     }
-  .notfound{
-      color: var(--colrd);
-      position: absolute;
-      text-align: center;
-      background-color: var(--blCol);
-      line-height: 40px;
-      width: 150px;
-      /* height: 30px; */
-  }
     /*serch ends  */
 
     /* map starts */
@@ -168,20 +153,32 @@
 #iconImg img{
     width: 30px;
 }
+.share i{
+    /* color: blue; */
+}
+
+.share{
+    font-size: 22px;
+    width: 50px;
+    background-color: white;
+    border: 1px solid black;
+    /* height: 40px; */
+    border-radius: 5px;
+    bottom: 10px;
+    right: 10px; 
+    text-align: center;
+}
 @media screen and (max-width: 280px){
     .weath{
-        flex-wrap: wrap;
         justify-content: space-between;
         padding: 5px;
     }
     .weath > div{
-        /* width: 90px; */
         align-items: center;
         line-height: 20px;
     }
     .lft{
         top: -30px;
-        /* font-size: 20px; */
     }
     .temLocBtn{
         width: 35px;
@@ -199,10 +196,5 @@
     .weath > div b{
         font-size: 14px;
     }
-    #map {
-        /* width: 98%; */
-        height: 500px;
-        
-      }
 
 }
