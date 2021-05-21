@@ -190,7 +190,7 @@ class mapdisp {
             .setDraggable(true);
             // add ctrl
             var nav = new mapboxgl.NavigationControl();
-            map.addControl(nav, 'bottom-right');
+            map.addControl(nav, 'bottom-left');
 
             // get weather for location
             const gets = new getData();

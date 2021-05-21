@@ -7,32 +7,27 @@
      <link rel="stylesheet" href="./style/style.css">
      <!-- font awesome -->
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"  />
-     <!-- mapquest -->
-     <!-- <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/> -->
-    <!-- <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script> -->
-
-      
-<script src='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
-<link href='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
+     <!-- mapbox -->
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
 
      <title>Geo-Search</title>
 </head>
 <body>
   <!-- main -->
   <main class="container">
+    <!-- share btn -->
     <div class="absolute share" ><a href="#" id="fbs"><i class="fas fa-share-alt"></i></a></div>
-
+    <!-- wrapper div -->
     <div class="main-wrapper">
-        <!-- search bar starts -->
+      <!-- search bar starts -->
     <div class="searchbar ">
-
       <!-- form container -->
     <form action="/" autocomplete="off"  id="se">
-      <div class="search-box p2 flex">
+      <div class="search-box px2 flex">
         <i class="fas fa-map-marker-alt px2"></i>
         <input type="search" id="searchs" name="searchs" placeholder="search places" required>
       </div>
-      <!-- <span class="notfound"></span> -->
     </form>
     <!-- weather div -->
     <div class="weathers" id="tggleDisp">
@@ -44,7 +39,7 @@
         <div class="weathhov "><span>Humidity</span><b id="humidityLoc" >77%</b></div>
         <div class="weathhov "><span>wind speed</span><b id="wspeedLoc">77%</b></div>
         
-        <div class="lft weathhov " id="lft">
+        <div class="lft weathhov absolute" id="lft">
           <i class="fas fa-caret-left fa-3x" id="tggle"></i>
 
         </div>
@@ -60,16 +55,12 @@
   </div>
   </div>
 <!-- search ends -->
+
 <!-- map starts -->
-
 <div id="map"></div>
-    </div>
-
-  </main>
+</div>
+ </main>
    
     <script src="./script/index.js"></script>
-
-
-
 </body>
 </html>
